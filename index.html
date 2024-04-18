@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Nación</title>
+    <meta name="description"content="Sitio web oficial del Banco Nación." />
+    <meta name="robots"content="index,follow" />
+    <link rel="icon" type="image/jpg" href="./assets/logos/BNA-favicon.png">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
+    <script src="./script.js"></script>
+    <style>
+        #mensaje-error {
+            color: red;
+            padding: 7px;
+            font-size: 1.8rem;
+            text-align: center;
+            bottom: -8%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER -->
+
+    <header>
+
+        <figure>
+            <img src="./assets/logos/Logo_BNA-Header.svg" alt="logo-bna">
+        </figure>
+
+        <ul>
+            <li class="header-sol">
+                <p>Solicitud de Turnos</p>
+                <img src="./assets/icons/header-calendar.svg" alt="calendar-logo">
+            </li>
+            <li class="header-hb">
+                <p>Home Banking</p>
+                <img src="./assets/icons/header-lock.svg" alt="lock-logo">
+            </li>
+        </ul>
+
+    </header>
+
+
+    <!-- FORMULARIO -->
+
+    <main>
+
+        <form action="./banco.php" id="formulario" method="post">
+
+            <fieldset class="form-fieldsets">
+
+                <p class="form-fieldsets-title">Nombre y Apellido</p>
+
+                <label for="nom-ape">
+                    <input type="text" id="nom-ape" name="nom-ape" placeholder="Ej: García, Felipe..." required>
+                </label>
+
+            </fieldset>
+
+
+            <fieldset class="form-fieldsets">
+
+                <p class="form-fieldsets-title">¿Qué servicios del Banco Nación utiliza?</p>
+
+                <label for="servicios">
+                    <!-- <select name="servicios" id="servicios" multiple>
+                        <option value="Cuenta Corriente">Cuenta Corriente</option>
+                        <option value="Caja de Ahorros">Caja de Ahorro</option>
+                        <option value="Home Banking">Home Banking</option>
+                        <option value="Créditos">Créditos</option>
+                        <option value="Hipotecas">Hipotecas</option>
+                        <option value="Cajas de Seguridad">Cajas de Seguridad</option>
+                    </select> -->
+                    <select name="servicios[]" multiple size="6" id="servicios">
+                        <option value="Cuenta Corriente">Cuenta Corriente</option>
+                        <option value="Caja De Ahorros">Caja de Ahorro</option>
+                        <option value="Home Banking">Home Banking</option>
+                        <option value="Créditos">Créditos</option>
+                        <option value="Hipotecas">Hipotecas</option>
+                        <option value="Cajas De Seguridad">Cajas de Seguridad</option>
+                    </select>
+                </label>
+
+            </fieldset>
+
+
+            <fieldset class="form-fieldsets">
+
+                <p class="form-fieldsets-title">¿Cuál de estos paquetes le interesa tomar?</p>
+
+                <div>
+
+                    <label class="paquetes" for="paquetes">
+                        <input type="radio" name="paquetes" id="paquete1" value="Paquete de $1.000 con el 5.0% interés">
+                        <p>Nuestro paquete de $1.000 con el 5.0% interés</p>
+                    </label>
+
+                    <label class="paquetes" for="paquetes">
+                        <input type="radio" name="paquetes" id="paquete2" value="Paquete de $5.000 con el 6.5% interés">
+                        <p>Nuestro paquete de $5.000 con el 6.5% interés</p>
+                    </label>
+
+                    <label class="paquetes" for="paquetes">
+                        <input type="radio" name="paquetes" id="paquete3" value="Paquete de $10.000 con el 8.0% interés">
+                        <p>Nuestro paquete de $10.000 con el 8.0% interés</p>
+                    </label>
+
+                </div>
+
+            </fieldset>
+
+
+            <fieldset class="form-fieldsets">
+
+                <p class="form-fieldsets-title">¿Cuánto desea pagar por mes?</p>
+
+                <label for="pago">
+                    <input type="text" name="pago" id="pago" placeholder="Ingrese monto $" required>
+                </label>
+
+            </fieldset>
+
+
+            <fieldset class="form-fieldsets">
+
+                <p class="form-fieldsets-title">¿Desea recibir publicaciones del Banco Nación?</p>
+
+                <div class="container-publicaciones">
+                    <label class="publicaciones" for="publicaciones">
+                        <input type="checkbox" name="publicaciones" id="publicaciones">
+                        <p>Envíame notificaciones</p>
+                    </label>
+
+                    <label class="publicaciones" for="email">
+                        <p>Mi correo: </p>
+                        <input type="email" name="email" id="email" placeholder="Ej: example@gmail.com">
+                    </label>
+                </div>
+
+            </fieldset>
+            
+
+            <fieldset class="form-fieldsets botones">
+
+                <div class="botones-reset-y-continuar" onsubmit="validarFormulario()">
+                    <input type="reset" value="Restablecer">
+                    <input type="submit" value="Enviar">
+                </div>
+
+            </fieldset>
+
+        </form>
+        <span class="mensaje-error" id="mensaje-error"></span>
+    </main>
+</body>
+</html>
